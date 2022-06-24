@@ -1,0 +1,6 @@
+
+Content Security Policy
+
+    - Means securing content on a website with a policy 
+        - example cross script attack prevented by sanitize library 
+        

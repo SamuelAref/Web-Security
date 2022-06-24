@@ -1,0 +1,38 @@
+CORS (Cross Origin Resource Sharing )
+
+    - is a mechanism that allows one website URL to request data from a different website URL4
+    - so the http header and permissions must be the same in the two URL's
+    - How to fix it? configure the server to respond accordingly with appropriate header 
+
+
+Fixing CORS Errors  (using express)
+
+    Error - fetch at port 3000 from port 127.0.0.1:5500 
+    - we need to tell our server that we allow that port 
+    js file 
+
+        fetch("http://localhost:3000/data")
+            .then(res => res.json())
+            .tehn(data => console.log(data))
+
+    server.js 
+
+        const express = require("express")
+        const app = express()
+
+        app.use(cors({
+
+            origin: "http://127.0.0.1:5500",
+            credentials : true, // for authentication
+            methods : ["GET", "POST"] // can specify what can be done with the data
+        }))
+
+        app.get("/data", (req, res) => {
+
+            res.json({ name: "Kyle", favoriteFood: "Rice" })
+        })
+
+        app.listen(3000)
+
+        // we installed cors 
+        npm i cors 
